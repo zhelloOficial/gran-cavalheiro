@@ -47,8 +47,12 @@ h2.d { font-size: clamp(42px, 4.8vw, 72px); }
 .btn:hover .i { transform: translateX(4px); }
 .btn:active { transform: scale(0.97); }
 .btn--lg { height: 56px; padding: 0 32px; font-size: 16px; }
-.btn--copper { background: var(--copper); color: var(--ink); box-shadow: 0 16px 30px -18px rgba(200,147,94,0.9); }
-.btn--copper:hover { background: var(--copper-2); }
+.btn--copper { position: relative; overflow: hidden; isolation: isolate; background: linear-gradient(180deg, #d6a46e 0%, #c08a52 100%); color: var(--ink); font-weight: 700; box-shadow: inset 0 1px 0 rgba(255,255,255,0.35), 0 14px 28px -14px rgba(160,108,58,0.85); }
+.btn--copper::after { content: ""; position: absolute; top: 0; bottom: 0; left: -60%; width: 40%; z-index: -1; background: linear-gradient(100deg, transparent, rgba(255,255,255,0.5), transparent); transform: skewX(-20deg); transition: left 0.7s var(--ease); }
+.btn--copper:hover { transform: translateY(-2px); box-shadow: inset 0 1px 0 rgba(255,255,255,0.35), 0 20px 34px -14px rgba(160,108,58,0.95); }
+.btn--copper:hover::after { left: 130%; }
+.btn--line { border-color: rgba(20,18,17,0.55); color: var(--ink); }
+.btn--line:hover { background: var(--ink); color: var(--cream); border-color: var(--ink); }
 .btn--dark { background: var(--ink); color: var(--cream); box-shadow: 0 16px 30px -18px rgba(20,18,17,0.7); }
 .btn--dark:hover { background: var(--ink-2); }
 .btn--dark-soft { background: var(--ink-2); color: var(--cream); }
@@ -286,6 +290,10 @@ h2.d { font-size: clamp(42px, 4.8vw, 72px); }
   .loc__map { height: 420px; }
 }
 @media (max-width: 640px) {
+  /* no celular só a barra fixa de baixo fica cobre */
+  main .btn--copper { background: var(--ink); color: var(--cream); font-weight: 600; box-shadow: 0 16px 30px -18px rgba(20,18,17,0.7); }
+  main .btn--copper::after { display: none; }
+  .final .btn--copper { background: var(--cream); color: var(--ink); }
   body { padding-bottom: 88px; }
   .header__in { height: 70px; }
   .header__logo img { height: 38px; }
