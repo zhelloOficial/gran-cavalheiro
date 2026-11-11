@@ -1,0 +1,354 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Gran Cavalheiro | Barbearia por assinatura em Curitiba</title>
+<meta name="description" content="Corte, barba e cuidados masculinos no Batel e no Cabral, em Curitiba. Agende seu horário ou assine o Clube Gran Cavalheiro.">
+<meta name="theme-color" content="#f5f1ea">
+<meta property="og:title" content="Gran Cavalheiro | Barbearia em Curitiba">
+<meta property="og:image" content="assets/img/facade-sign.webp">
+<link rel="icon" href="assets/img/monogram-dark.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,600..900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css">
+<link rel="stylesheet" href="styles.css?v=4">
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+    <symbol id="chev" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
+    <symbol id="check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></symbol>
+    <symbol id="wa" viewBox="0 0 24 24"><path d="M20 12a8 8 0 0 1-11.8 7L4 20l1-4.1A8 8 0 1 1 20 12z"/><path d="M9 9.5c.3 1.6 1.8 3.4 3.6 4.3l1.2-1.1 1.7.8-.4 1.6c-3 .3-6.5-3.1-6.6-6l1.5-.5.8 1.6z"/></symbol>
+  </defs>
+</svg>
+
+<header class="header" id="topo">
+  <div class="wrap header__in">
+    <a href="#topo" class="header__logo" aria-label="Gran Cavalheiro, início">
+      <img src="assets/img/logo-dark.png" alt="Gran Cavalheiro Barbearia" width="698" height="348">
+    </a>
+    <nav class="header__nav" aria-label="Principal">
+      <a href="#servicos">Serviços</a>
+      <a href="#clube">Clube</a>
+      <a href="#unidades">Unidades</a>
+      <a href="#duvidas">Dúvidas</a>
+    </nav>
+    <a class="btn btn--dark" href="https://cashbarber.com.br/GranCavalheiro/" target="_blank" rel="noopener">
+      Agendar horário <svg class="i"><use href="#arrow"/></svg>
+    </a>
+  </div>
+</header>
+
+<main>
+
+  <!-- TOPO -->
+  <section class="hero">
+    <div class="wrap hero__grid">
+      <div class="hero__copy">
+        <p class="hero__kicker">Barbearia por assinatura · Batel e Cabral</p>
+        <h1 class="d">A melhor barbearia de <em>Curitiba</em></h1>
+        <p class="hero__lead">Corte e barba com hora marcada, sem correria e com quem entende de estilo masculino. Você chega, senta e sai com o visual no ponto.</p>
+        <div class="ctas">
+          <a class="btn btn--dark btn--lg" href="https://cashbarber.com.br/GranCavalheiro/" target="_blank" rel="noopener">
+            Agendar horário <svg class="i"><use href="#arrow"/></svg>
+          </a>
+          <a class="btn btn--dark-soft btn--lg" href="https://wa.me/5541988697721?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20quero%20marcar%20um%20hor%C3%A1rio." target="_blank" rel="noopener">
+            WhatsApp <svg class="i"><use href="#arrow"/></svg>
+          </a>
+        </div>
+        <p class="hero__rating"><span class="stars" aria-hidden="true">★★★★★</span> <b>5,0 no Google</b> · mais de 200 avaliações</p>
+      </div>
+
+      <div class="hero__media">
+        <div class="hero__photo">
+          <img src="assets/img/facade-sign.webp" alt="Letreiro da Gran Cavalheiro na fachada" width="1355" height="1800">
+        </div>
+        <div class="sticker" aria-hidden="true">
+          <img src="assets/img/monogram.png" alt="" width="769" height="426">
+          <span>Barbearia por assinatura</span>
+        </div>
+        <div class="ticket" aria-hidden="true">
+          <span class="ticket__dot" data-dot></span>
+          <span data-status-text>Aberto agora · até 20h</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAIXA -->
+  <div class="band" aria-hidden="true">
+    <div class="band__track">
+      <span>Corte</span><img src="assets/img/monogram-dark.png" alt=""><span>Barba</span><img src="assets/img/monogram-dark.png" alt=""><span>Navalha</span><img src="assets/img/monogram-dark.png" alt=""><span>Clube</span><img src="assets/img/monogram-dark.png" alt="">
+      <span>Corte</span><img src="assets/img/monogram-dark.png" alt=""><span>Barba</span><img src="assets/img/monogram-dark.png" alt=""><span>Navalha</span><img src="assets/img/monogram-dark.png" alt=""><span>Clube</span><img src="assets/img/monogram-dark.png" alt="">
+      <span>Corte</span><img src="assets/img/monogram-dark.png" alt=""><span>Barba</span><img src="assets/img/monogram-dark.png" alt=""><span>Navalha</span><img src="assets/img/monogram-dark.png" alt=""><span>Clube</span><img src="assets/img/monogram-dark.png" alt="">
+      <span>Corte</span><img src="assets/img/monogram-dark.png" alt=""><span>Barba</span><img src="assets/img/monogram-dark.png" alt=""><span>Navalha</span><img src="assets/img/monogram-dark.png" alt=""><span>Clube</span><img src="assets/img/monogram-dark.png" alt="">
+    </div>
+  </div>
+
+  <!-- SERVIÇOS -->
+  <section class="section" id="servicos">
+    <div class="wrap">
+      <div class="split reveal">
+        <h2 class="d">O que você procura hoje?</h2>
+        <p>Do corte rápido no meio da semana ao tratamento completo antes de um evento. Escolha o serviço e marque o horário.</p>
+      </div>
+
+      <div class="cards">
+        <article class="card reveal">
+          <div class="card__photo"><img src="assets/img/fade-side-s.webp" alt="Degradê sendo feito na máquina" loading="lazy"></div>
+          <div class="card__body">
+            <h3 class="d">Corte</h3>
+            <p>Pensado pro formato do seu rosto e pro tempo que você tem de manhã.</p>
+            <ul class="checks">
+              <li><svg class="i"><use href="#check"/></svg>Tesoura ou máquina</li>
+              <li><svg class="i"><use href="#check"/></svg>Acabamento de cabelo</li>
+              <li><svg class="i"><use href="#check"/></svg>Finalização com Keune</li>
+            </ul>
+            <a class="btn btn--dark" href="https://cashbarber.com.br/GranCavalheiro/" target="_blank" rel="noopener">Agendar corte <svg class="i"><use href="#arrow"/></svg></a>
+          </div>
+        </article>
+
+        <article class="card card--featured reveal" id="clube">
+          <span class="card__tag">Clube Gran Cavalheiro</span>
+          <span class="card__sticker" aria-hidden="true"><img src="assets/img/monogram-dark.png" alt=""></span>
+          <div class="card__photo"><img src="assets/img/chair-warm-s.webp" alt="Cadeira de couro sob luz quente" loading="lazy"></div>
+          <div class="card__body">
+            <h3 class="d">Assinatura</h3>
+            <p>Um valor fixo por mês e o cabelo nunca mais passa do ponto.</p>
+            <ul class="checks">
+              <li><svg class="i"><use href="#check"/></svg>Corte e barba ilimitados</li>
+              <li><svg class="i"><use href="#check"/></svg>Benefícios em produtos</li>
+              <li><svg class="i"><use href="#check"/></svg>Benefícios em serviços extras</li>
+            </ul>
+            <a class="btn btn--copper" href="https://wa.me/5541988697721?text=Ol%C3%A1!%20Quero%20saber%20do%20Clube%20Gran%20Cavalheiro." target="_blank" rel="noopener">Quero assinar <svg class="i"><use href="#arrow"/></svg></a>
+          </div>
+        </article>
+
+        <article class="card reveal">
+          <div class="card__photo"><img src="assets/img/razor-s.webp" alt="Barba sendo feita na navalha" loading="lazy"></div>
+          <div class="card__body">
+            <h3 class="d">Barba</h3>
+            <p>Do desenho ao acabamento, linha por linha.</p>
+            <ul class="checks">
+              <li><svg class="i"><use href="#check"/></svg>Toalha quente</li>
+              <li><svg class="i"><use href="#check"/></svg>Navalha</li>
+              <li><svg class="i"><use href="#check"/></svg>Acabamento de barba</li>
+            </ul>
+            <a class="btn btn--dark" href="https://cashbarber.com.br/GranCavalheiro/" target="_blank" rel="noopener">Agendar barba <svg class="i"><use href="#arrow"/></svg></a>
+          </div>
+        </article>
+      </div>
+
+      <div class="more">
+        <article class="more__card reveal">
+          <div class="more__photo"><img src="assets/img/keune-pump-s.webp" alt="Produtos Keune" loading="lazy"></div>
+          <div>
+            <h3 class="d">Extras</h3>
+            <ul class="dots">
+              <li>Sobrancelha</li><li>Hidratação</li><li>Matização de grisalho</li><li>Terapia facial</li><li>Depilação de nariz e orelha</li>
+            </ul>
+          </div>
+        </article>
+        <article class="more__card reveal">
+          <div class="more__photo"><img src="assets/img/dryer-s.webp" alt="Secador cromado" loading="lazy"></div>
+          <div>
+            <h3 class="d">Premium</h3>
+            <ul class="dots">
+              <li>Alinhamento térmico</li><li>Camuflagem</li><li>Long &amp; Strong</li><li>Detox</li><li>Hydro</li>
+            </ul>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- AVALIAÇÕES -->
+  <section class="reviews">
+    <div class="wrap reviews__head">
+      <div>
+        <p class="reviews__kicker">Avaliações no Google</p>
+        <h2 class="d">O que dizem depois do corte</h2>
+      </div>
+      <div class="badge">
+        <b class="d">5,0</b>
+        <div><span class="stars" aria-hidden="true">★★★★★</span><small>mais de 200 avaliações no Google</small></div>
+      </div>
+    </div>
+    <div class="marquee">
+      <div class="marquee__track">
+        <figure class="review"><span class="stars" aria-hidden="true">★★★★★</span><blockquote>“A minha experiência na Gran Cavalheiro foi incrível! Super atencioso e um profissional de primeira. Mudou completamente a forma como vejo meu cabelo.”</blockquote><figcaption>Renan</figcaption></figure>
+        <figure class="review"><span class="stars" aria-hidden="true">★★★★★</span><blockquote>“Excelente corte, muito bom o tratamento e as explicações. Até minha família comentou que ficou excelente quando cheguei em casa.”</blockquote><figcaption>João Tardelli</figcaption></figure>
+        <figure class="review"><span class="stars" aria-hidden="true">★★★★★</span><blockquote>“Excelente barbearia e excelentes profissionais! Frequento desde a abertura e é sempre uma experiência incrível.”</blockquote><figcaption>Victor Manuel</figcaption></figure>
+        <figure class="review"><span class="stars" aria-hidden="true">★★★★★</span><blockquote>“Sempre sou muito bem atendido, desde a recepção e o ambiente até os serviços. Faz toda a diferença na minha experiência.”</blockquote><figcaption>André Barbosa</figcaption></figure>
+        <figure class="review" aria-hidden="true"><span class="stars">★★★★★</span><blockquote>“A minha experiência na Gran Cavalheiro foi incrível! Super atencioso e um profissional de primeira. Mudou completamente a forma como vejo meu cabelo.”</blockquote><figcaption>Renan</figcaption></figure>
+        <figure class="review" aria-hidden="true"><span class="stars">★★★★★</span><blockquote>“Excelente corte, muito bom o tratamento e as explicações. Até minha família comentou que ficou excelente quando cheguei em casa.”</blockquote><figcaption>João Tardelli</figcaption></figure>
+        <figure class="review" aria-hidden="true"><span class="stars">★★★★★</span><blockquote>“Excelente barbearia e excelentes profissionais! Frequento desde a abertura e é sempre uma experiência incrível.”</blockquote><figcaption>Victor Manuel</figcaption></figure>
+        <figure class="review" aria-hidden="true"><span class="stars">★★★★★</span><blockquote>“Sempre sou muito bem atendido, desde a recepção e o ambiente até os serviços. Faz toda a diferença na minha experiência.”</blockquote><figcaption>André Barbosa</figcaption></figure>
+      </div>
+    </div>
+    <div class="wrap">
+      <a class="btn btn--dashed-light" href="https://www.google.com/maps/search/Gran+Cavalheiro+Barbearia+Curitiba" target="_blank" rel="noopener">Ler todas no Google <svg class="i"><use href="#arrow"/></svg></a>
+    </div>
+  </section>
+
+  <!-- GALERIA -->
+  <section class="section">
+    <div class="wrap">
+      <div class="split reveal">
+        <h2 class="d">Por dentro da Gran</h2>
+        <p>Couro, cromo e produto profissional em todas as cadeiras. O mesmo cuidado no Batel e no Cabral.</p>
+      </div>
+      <div class="bento">
+        <figure class="b b--tall reveal"><img src="assets/img/fade-side-s.webp" alt="Degradê sendo feito na máquina dourada" loading="lazy"><figcaption>Degradê na máquina</figcaption></figure>
+        <figure class="b reveal"><img src="assets/img/chair-warm-s.webp" alt="Cadeira de couro sob luz quente" loading="lazy"><figcaption>Cadeira de couro</figcaption></figure>
+        <figure class="b reveal"><img src="assets/img/keune-jars-s.webp" alt="Pomadas Keune" loading="lazy"><figcaption>Produtos Keune</figcaption></figure>
+        <figure class="b b--tall reveal"><img src="assets/img/finish-s.webp" alt="Cabelo finalizado e penteado" loading="lazy"><figcaption>Finalização</figcaption></figure>
+        <figure class="b reveal"><img src="assets/img/razor2-s.webp" alt="Barba feita na navalha" loading="lazy"><figcaption>Navalha</figcaption></figure>
+        <figure class="b reveal"><img src="assets/img/machines-s.webp" alt="Máquinas de corte na bancada" loading="lazy"><figcaption>Ferramentas</figcaption></figure>
+      </div>
+      <div class="ctas reveal">
+        <a class="btn btn--dark btn--lg" href="https://cashbarber.com.br/GranCavalheiro/" target="_blank" rel="noopener">Agendar horário <svg class="i"><use href="#arrow"/></svg></a>
+        <a class="btn btn--dark-soft btn--lg" href="https://wa.me/5541988697721?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20quero%20marcar%20um%20hor%C3%A1rio." target="_blank" rel="noopener">WhatsApp <svg class="i"><use href="#arrow"/></svg></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIÊNCIA -->
+  <section class="section section--flush">
+    <div class="wrap">
+      <div class="exp reveal">
+        <div class="exp__head">
+          <h2 class="d">O que te espera na cadeira</h2>
+          <a class="btn btn--dark" href="https://cashbarber.com.br/GranCavalheiro/" target="_blank" rel="noopener">Agendar horário <svg class="i"><use href="#arrow"/></svg></a>
+        </div>
+        <div class="exp__grid">
+          <figure><div class="exp__ring"><img src="assets/img/chair-warm3-s.webp" alt="" loading="lazy"></div><figcaption><b class="d">Cadeira de massagem</b>Você relaxa enquanto o barbeiro trabalha.</figcaption></figure>
+          <figure><div class="exp__ring"><img src="assets/img/beer-s.webp" alt="" loading="lazy"></div><figcaption><b class="d">Café e cerveja</b>Um café ou uma gelada enquanto espera.</figcaption></figure>
+          <figure><div class="exp__ring"><img src="assets/img/keune-jars-s.webp" alt="" loading="lazy"></div><figcaption><b class="d">Produtos Keune</b>Do shampoo à pomada, só linha profissional.</figcaption></figure>
+          <figure><div class="exp__ring"><img src="assets/img/razor-face-s.webp" alt="" loading="lazy"></div><figcaption><b class="d">Toalha quente</b>Amacia os pelos antes da navalha passar.</figcaption></figure>
+          <figure><div class="exp__ring"><img src="assets/img/clipper-gold-s.webp" alt="" loading="lazy"></div><figcaption><b class="d">Hora marcada</b>Agendou, chegou, sentou. Sem fila.</figcaption></figure>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- UNIDADES -->
+  <section class="section" id="unidades">
+    <div class="wrap loc">
+      <div class="reveal">
+        <h2 class="d">Duas unidades, o mesmo padrão.</h2>
+        <div class="loc__tabs" role="tablist" aria-label="Escolha a unidade">
+          <button role="tab" aria-selected="true" data-unit="batel">Batel</button>
+          <button role="tab" aria-selected="false" data-unit="cabral">Cabral</button>
+        </div>
+        <div class="loc__info" data-info="batel">
+          <p class="loc__addr">Av. do Batel, 1700, loja 2<br>Batel, Curitiba, PR</p>
+          <p class="loc__tel"><a href="tel:+554135288586">(41) 3528-8586</a> <span class="status" data-status><i></i><b></b></span></p>
+        </div>
+        <div class="loc__info" data-info="cabral" hidden>
+          <p class="loc__addr">Av. Munhoz da Rocha, 752<br>Cabral, Curitiba, PR</p>
+          <p class="loc__tel"><a href="tel:+554132066817">(41) 3206-6817</a> <span class="status" data-status><i></i><b></b></span></p>
+        </div>
+        <dl class="hours">
+          <div><dt>Segunda a sexta</dt><dd>9h às 20h</dd></div>
+          <div><dt>Sábado</dt><dd>9h às 18h</dd></div>
+          <div><dt>Domingo</dt><dd>Fechado</dd></div>
+        </dl>
+        <div class="ctas">
+          <a class="btn btn--dark" href="https://cashbarber.com.br/GranCavalheiro/" target="_blank" rel="noopener" data-book>Agendar no Batel <svg class="i"><use href="#arrow"/></svg></a>
+          <a class="btn btn--dashed" href="https://www.google.com/maps/search/?api=1&query=Av.+do+Batel,+1700,+Curitiba" target="_blank" rel="noopener" data-route>Como chegar</a>
+        </div>
+      </div>
+      <div class="loc__map reveal">
+        <div id="map" aria-label="Mapa com as duas unidades da Gran Cavalheiro"></div>
+        <div class="map__card" data-map-card>
+          <img src="assets/img/monogram-dark.png" alt="" width="769" height="426">
+          <div><b data-map-name>Gran Cavalheiro Batel</b><span data-map-addr>Av. do Batel, 1700, loja 2</span></div>
+          <a href="https://www.google.com/maps/search/?api=1&query=Av.+do+Batel,+1700,+Curitiba" target="_blank" rel="noopener" data-map-route aria-label="Abrir rota no Google Maps"><svg class="i"><use href="#arrow"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DÚVIDAS -->
+  <section class="section section--flush" id="duvidas">
+    <div class="wrap wrap--narrow">
+      <h2 class="d reveal">Pergunta de quem ainda não veio</h2>
+      <div class="faq reveal">
+        <details>
+          <summary>Preciso agendar horário? <svg class="i"><use href="#chev"/></svg></summary>
+          <div class="faq__a"><p>Recomendamos. Pelo agendamento online você escolhe a unidade e o horário, e é atendido na hora marcada, sem fila.</p></div>
+        </details>
+        <details>
+          <summary>O que é o Clube Gran Cavalheiro? <svg class="i"><use href="#chev"/></svg></summary>
+          <div class="faq__a"><p>É a assinatura da barbearia: você paga um valor por mês e faz corte e barba quantas vezes quiser, com benefícios em produtos e serviços extras. Planos e valores pelo WhatsApp.</p></div>
+        </details>
+        <details>
+          <summary>O que está incluso nos serviços principais? <svg class="i"><use href="#chev"/></svg></summary>
+          <div class="faq__a"><p>Cabelo, máquina, barba e os acabamentos de cabelo e de barba.</p></div>
+        </details>
+        <details>
+          <summary>Quais serviços extras vocês fazem? <svg class="i"><use href="#chev"/></svg></summary>
+          <div class="faq__a"><p>Sobrancelha, hidratação, matização de grisalho, terapia facial e depilação de nariz e orelha. Na linha premium: alinhamento térmico, camuflagem e os protocolos Long &amp; Strong, Detox e Hydro.</p></div>
+        </details>
+        <details>
+          <summary>Quais produtos vocês usam? <svg class="i"><use href="#chev"/></svg></summary>
+          <div class="faq__a"><p>Trabalhamos com a linha profissional Keune no corte, na barba e na finalização.</p></div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- CHAMADA FINAL -->
+  <section class="final">
+    <div class="wrap wrap--narrow final__in reveal">
+      <h2 class="d">Pronto pro <em>próximo corte?</em></h2>
+      <p>Escolha a unidade e o horário. A cadeira fica te esperando.</p>
+      <div class="ctas ctas--center">
+        <a class="btn btn--copper btn--lg" href="https://cashbarber.com.br/GranCavalheiro/" target="_blank" rel="noopener">Agendar horário <svg class="i"><use href="#arrow"/></svg></a>
+        <a class="btn btn--dashed-light btn--lg" href="https://wa.me/5541988697721?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20quero%20marcar%20um%20hor%C3%A1rio." target="_blank" rel="noopener">WhatsApp <svg class="i"><use href="#arrow"/></svg></a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="wrap footer__grid">
+    <div>
+      <img class="footer__logo" src="assets/img/logo.png" alt="Gran Cavalheiro" width="698" height="348" loading="lazy">
+      <p>Batel · Av. do Batel, 1700, loja 2<br>Cabral · Av. Munhoz da Rocha, 752<br>Curitiba, PR</p>
+    </div>
+    <div>
+      <p>(41) 3528-8586 · Batel<br>(41) 3206-6817 · Cabral<br><a href="https://wa.me/5541988697721" target="_blank" rel="noopener">(41) 98869-7721 · WhatsApp</a></p>
+      <p>Segunda a sexta: 9h às 20h<br>Sábado: 9h às 18h<br>Domingo: fechado</p>
+    </div>
+    <nav class="footer__nav" aria-label="Rodapé">
+      <a href="#servicos">Serviços</a>
+      <a href="#clube">Clube</a>
+      <a href="#unidades">Unidades</a>
+      <a href="https://cashbarber.com.br/GranCavalheiro/" target="_blank" rel="noopener">Agendar</a>
+    </nav>
+  </div>
+  <div class="wrap footer__legal">
+    <p>Todos os direitos reservados © 2026 Gran Cavalheiro Barbearia</p>
+    <p>Desenvolvido pela <a href="https://www.zhello.com.br" target="_blank" rel="noopener">Zhello</a></p>
+  </div>
+</footer>
+
+<a class="fab" href="https://wa.me/5541988697721?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20quero%20marcar%20um%20hor%C3%A1rio." target="_blank" rel="noopener">
+  <svg class="i"><use href="#wa"/></svg> Fale no WhatsApp
+</a>
+
+<div class="mcta">
+  <a class="btn btn--dark" href="https://cashbarber.com.br/GranCavalheiro/" target="_blank" rel="noopener">Agendar horário</a>
+  <a class="mcta__wa" href="https://wa.me/5541988697721?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20quero%20marcar%20um%20hor%C3%A1rio." target="_blank" rel="noopener" aria-label="Falar no WhatsApp"><svg class="i"><use href="#wa"/></svg></a>
+</div>
+
+<script src="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js"></script>
+<script src="main.js?v=4"></script>
+</body>
+</html>

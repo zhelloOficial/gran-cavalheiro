@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gran Cavalheiro | Prévias</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Bevan&family=Cinzel:wght@600..900&family=Playfair+Display:ital,wght@0,700..900;1,700&family=Plus+Jakarta+Sans:wght@400..700&display=swap" rel="stylesheet">
+<style>
+  :root { --ink: #141211; --paper: #f5f1ea; --copper: #c8935e; --muted: #6b6258; --line: rgba(20,18,17,.14); }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: #e4e0d8; color: var(--ink); font-family: "Plus Jakarta Sans", system-ui, sans-serif; font-size: 15px; line-height: 1.5; }
+  .page { max-width: 1400px; margin: 0 auto; padding: 40px 32px 80px; }
+  .group { margin-bottom: 64px; }
+  .group > h2 { margin: 0 0 6px; font-size: 26px; font-weight: 700; }
+  .group > p { margin: 0 0 24px; color: var(--muted); }
+  .grid { display: grid; gap: 20px; }
+  .grid--3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .grid--2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .tile { background: #fff; border-radius: 10px; overflow: hidden; box-shadow: 0 2px 10px rgba(0,0,0,.08); }
+  .tile__tag { display: flex; align-items: center; gap: 12px; padding: 12px 16px; font-weight: 700; font-size: 14px; border-bottom: 1px solid #eee; }
+  .tile__tag b { width: 30px; height: 30px; border-radius: 50%; display: grid; place-items: center; background: var(--ink); color: #fff; font-size: 15px; }
+  .tile__tag span { font-weight: 500; color: var(--muted); }
+
+  /* amostra: topo escuro + bloco claro */
+  .dark { position: relative; padding: 34px 30px 36px; color: #f5f1ea; background: var(--d, #141211); overflow: hidden; }
+  .dark::before { content: ""; position: absolute; inset: 0; background: url("../assets/img/chair-warm-s.webp") center 30% / cover; opacity: .32; }
+  .dark::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, var(--d, #141211) 30%, transparent 120%); }
+  .dark > * { position: relative; z-index: 1; }
+  .kick { margin: 0 0 12px; font-size: 11px; font-weight: 700; letter-spacing: .22em; text-transform: uppercase; color: var(--a, var(--copper)); }
+  .t1 { margin: 0; font-size: 44px; line-height: 1.02; }
+  .t1 em { font-style: normal; color: var(--a, var(--copper)); }
+  .sub { margin: 14px 0 20px; max-width: 30em; font-size: 14px; color: rgba(245,241,234,.78); }
+  .btn { display: inline-flex; align-items: center; height: 44px; padding: 0 22px; font: 600 14px "Plus Jakarta Sans", sans-serif; border-radius: var(--r, 999px); background: var(--a, var(--copper)); color: var(--at, #141211); }
+  .light { padding: 28px 30px 30px; background: var(--l, #f5f1ea); }
+  .t2 { margin: 0 0 16px; font-size: 28px; line-height: 1.08; }
+  .row { display: flex; gap: 28px; align-items: baseline; }
+  .t3 { font-size: 24px; line-height: 1; }
+  .row small { color: var(--muted); font-size: 13px; }
+
+  /* letras */
+  .f-a .t1, .f-a .t2, .f-a .t3 { font-family: "Archivo"; font-stretch: 118%; font-weight: 800; text-transform: uppercase; letter-spacing: -.02em; }
+  .f-a .t1 { font-size: 36px; } .f-a .t2 { font-size: 23px; } .f-a .t3 { font-size: 20px; }
+  .f-b .t1, .f-b .t2, .f-b .t3 { font-family: "Archivo"; font-stretch: 62%; font-weight: 900; text-transform: uppercase; }
+  .f-b .t1 { font-size: 54px; line-height: .95; } .f-b .t2 { font-size: 34px; } .f-b .t3 { font-size: 30px; }
+  .f-c .t1, .f-c .t2, .f-c .t3 { font-family: "Playfair Display"; font-weight: 800; letter-spacing: -.01em; }
+  .f-d .t1, .f-d .t2, .f-d .t3 { font-family: "Bevan"; font-weight: 400; }
+  .f-d .t1 { font-size: 38px; line-height: 1.08; } .f-d .t2 { font-size: 25px; } .f-d .t3 { font-size: 22px; }
+  .f-e .t1, .f-e .t2, .f-e .t3 { font-family: "Cinzel"; font-weight: 800; text-transform: uppercase; letter-spacing: .01em; }
+  .f-e .t1 { font-size: 36px; line-height: 1.1; } .f-e .t2 { font-size: 23px; } .f-e .t3 { font-size: 20px; }
+  .f-f .t1, .f-f .t2, .f-f .t3 { font-family: "Plus Jakarta Sans"; font-weight: 600; letter-spacing: -.03em; }
+  .f-f .t1 { font-size: 42px; }
+
+  /* cores */
+  .c-1 { --d: #141211; --l: #f5f1ea; --a: #c8935e; --at: #141211; --f: #141211; --ft: #f5f1ea; }
+  .c-2 { --d: #2b1d15; --l: #f4eee4; --a: #c8935e; --at: #1d130d; --f: #3a271b; --ft: #f4eee4; }
+  .c-3 { --d: #171211; --l: #f5f1ea; --a: #8a2a2a; --at: #f5f1ea; --f: #6f1f1f; --ft: #f5f1ea; }
+  .c-4 { --d: #13251d; --l: #f3f0e6; --a: #c9a45c; --at: #13251d; --f: #17302a; --ft: #f3f0e6; }
+  .swatches { display: flex; gap: 6px; margin-left: auto; }
+  .swatches i { width: 22px; height: 22px; border-radius: 50%; border: 1px solid rgba(0,0,0,.12); }
+  .col .t1, .col .t2, .col h4 { font-family: "Playfair Display"; font-weight: 800; }
+  .col .t1 { font-size: 36px; }
+  .col .t2 { font-size: 24px; }
+  .minis { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .mini { padding: 20px 18px; border-radius: 6px; border: 1px solid var(--line); text-align: center; }
+  .mini h4 { margin: 0 0 6px; font-size: 22px; }
+  .mini p { margin: 0 0 14px; font-size: 13px; color: var(--muted); }
+  .mini .btn { height: 38px; padding: 0 16px; font-size: 13px; background: var(--d); color: #f5f1ea; }
+  .mini--f { background: var(--f); color: var(--ft); border-color: transparent; }
+  .mini--f h4 { color: var(--a); }
+  .c-3 .mini--f h4 { color: #e2b98a; }
+  .mini--f p { color: rgba(245,241,234,.78); }
+  .mini--f .btn { background: var(--a); color: var(--at); }
+  .c-3 .mini--f .btn { background: #f5f1ea; color: #171211; }
+
+  /* blocos */
+  .blk { padding: 30px; background: #f5f1ea; }
+  .blk h4 { margin: 0; font-family: "Playfair Display"; font-weight: 800; font-size: 24px; }
+  .blk p { margin: 0; font-size: 13px; color: var(--muted); }
+  .b1 .item { display: grid; grid-template-columns: 110px 1fr auto; gap: 16px; align-items: center; padding: 18px 0; border-top: 1px solid var(--line); }
+  .b1 .item:last-child { border-bottom: 1px solid var(--line); }
+  .b1 .go { font-weight: 700; font-size: 13px; white-space: nowrap; }
+  .b1 .item--f h4 { color: #8c5d31; }
+  .trio { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+  .trio .c { display: flex; flex-direction: column; align-items: center; gap: 8px; text-align: center; padding: 26px 14px 22px; }
+  .trio .btn { height: 36px; padding: 0 14px; font-size: 12px; margin-top: 8px; background: #141211; color: #f5f1ea; }
+  .trio .c--f { background: #141211; color: #f5f1ea; }
+  .trio .c--f h4 { color: #c8935e; }
+  .trio .c--f p { color: rgba(245,241,234,.75); }
+  .trio .c--f .btn { background: #c8935e; color: #141211; }
+  .b2 .c { border: 1px solid rgba(20,18,17,.55); border-radius: 3px; outline: 1px solid rgba(20,18,17,.25); outline-offset: -6px; background: transparent; }
+  .b2 .c--f { outline-color: rgba(200,147,94,.6); border-color: #141211; }
+  .b2 .btn { border-radius: 3px; }
+  .b3 .c { border-radius: 26px; background: #e9e1d4; border: 1px solid var(--line); }
+  .b3 .btn { border-radius: 999px; }
+  .b1 h4 { font-size: 22px; }
+  .b2 .c.c--f, .b3 .c.c--f { background: #141211; border-color: #141211; }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <section class="group" id="letras">
+    <h2>1. Letra dos títulos</h2>
+    <p>Mesmo texto, mesmas cores. Muda só a letra. Em cima como fica no topo escuro, embaixo num bloco claro.</p>
+    <div class="grid grid--3">
+      <div class="tile f-a"><div class="tile__tag"><b>A</b> Larga e forte <span>no espírito do logo</span></div>
+        <div class="dark"><p class="kick">Barbearia · Batel e Cabral</p><h3 class="t1">A melhor barbearia de <em>Curitiba.</em></h3><p class="sub">Corte, barba e cuidados masculinos com quem entende de estilo.</p><span class="btn">Agendar horário</span></div>
+        <div class="light"><h3 class="t2">O que você procura hoje?</h3><div class="row"><span class="t3">Corte</span><span class="t3">Barba</span><small>Tesoura ou máquina, pensado pro seu rosto.</small></div></div></div>
+      <div class="tile f-b"><div class="tile__tag"><b>B</b> Alta tipo cartaz <span>a da abertura da v2</span></div>
+        <div class="dark"><p class="kick">Barbearia · Batel e Cabral</p><h3 class="t1">A melhor barbearia de <em>Curitiba.</em></h3><p class="sub">Corte, barba e cuidados masculinos com quem entende de estilo.</p><span class="btn">Agendar horário</span></div>
+        <div class="light"><h3 class="t2">O que você procura hoje?</h3><div class="row"><span class="t3">Corte</span><span class="t3">Barba</span><small>Tesoura ou máquina, pensado pro seu rosto.</small></div></div></div>
+      <div class="tile f-c"><div class="tile__tag"><b>C</b> Serifa pesada <span>clássica, sem itálico fino</span></div>
+        <div class="dark"><p class="kick">Barbearia · Batel e Cabral</p><h3 class="t1">A melhor barbearia de <em>Curitiba.</em></h3><p class="sub">Corte, barba e cuidados masculinos com quem entende de estilo.</p><span class="btn">Agendar horário</span></div>
+        <div class="light"><h3 class="t2">O que você procura hoje?</h3><div class="row"><span class="t3">Corte</span><span class="t3">Barba</span><small>Tesoura ou máquina, pensado pro seu rosto.</small></div></div></div>
+      <div class="tile f-d"><div class="tile__tag"><b>D</b> Letreiro antigo <span>grossa, de placa de barbearia</span></div>
+        <div class="dark"><p class="kick">Barbearia · Batel e Cabral</p><h3 class="t1">A melhor barbearia de <em>Curitiba.</em></h3><p class="sub">Corte, barba e cuidados masculinos com quem entende de estilo.</p><span class="btn">Agendar horário</span></div>
+        <div class="light"><h3 class="t2">O que você procura hoje?</h3><div class="row"><span class="t3">Corte</span><span class="t3">Barba</span><small>Tesoura ou máquina, pensado pro seu rosto.</small></div></div></div>
+      <div class="tile f-e"><div class="tile__tag"><b>E</b> Gravada <span>maiúscula clássica, de fachada</span></div>
+        <div class="dark"><p class="kick">Barbearia · Batel e Cabral</p><h3 class="t1">A melhor barbearia de <em>Curitiba.</em></h3><p class="sub">Corte, barba e cuidados masculinos com quem entende de estilo.</p><span class="btn">Agendar horário</span></div>
+        <div class="light"><h3 class="t2">O que você procura hoje?</h3><div class="row"><span class="t3">Corte</span><span class="t3">Barba</span><small>Tesoura ou máquina, pensado pro seu rosto.</small></div></div></div>
+      <div class="tile f-f"><div class="tile__tag"><b>F</b> Sem serifa moderna <span>a do JP Barber</span></div>
+        <div class="dark"><p class="kick">Barbearia · Batel e Cabral</p><h3 class="t1">A melhor barbearia de <em>Curitiba.</em></h3><p class="sub">Corte, barba e cuidados masculinos com quem entende de estilo.</p><span class="btn">Agendar horário</span></div>
+        <div class="light"><h3 class="t2">O que você procura hoje?</h3><div class="row"><span class="t3">Corte</span><span class="t3">Barba</span><small>Tesoura ou máquina, pensado pro seu rosto.</small></div></div></div>
+    </div>
+  </section>
+
+  <section class="group" id="cores">
+    <h2>2. Cores</h2>
+    <p>Topo escuro, resto claro. O fundo claro ficou menos amarelado em todas. Muda a cor escura e a cor de destaque.</p>
+    <div class="grid grid--2">
+      <div class="tile col c-1"><div class="tile__tag"><b>1</b> Preto e cobre <span>as cores do logo, sem verde</span><div class="swatches"><i style="background:#141211"></i><i style="background:#f5f1ea"></i><i style="background:#c8935e"></i></div></div>
+        <div class="dark"><p class="kick">Barbearia · Batel e Cabral</p><h3 class="t1">A melhor barbearia de <em>Curitiba.</em></h3><p class="sub">Corte, barba e cuidados masculinos com quem entende de estilo.</p><span class="btn">Agendar horário</span></div>
+        <div class="light"><h3 class="t2">O que você procura hoje?</h3><div class="minis"><div class="mini"><h4>Corte</h4><p>Tesoura ou máquina.</p><span class="btn">Agendar corte</span></div><div class="mini mini--f"><h4>Assinatura</h4><p>Corte e barba ilimitados.</p><span class="btn">Quero assinar</span></div></div></div></div>
+      <div class="tile col c-2"><div class="tile__tag"><b>2</b> Couro <span>marrom tabaco com cobre</span><div class="swatches"><i style="background:#2b1d15"></i><i style="background:#f4eee4"></i><i style="background:#c8935e"></i></div></div>
+        <div class="dark"><p class="kick">Barbearia · Batel e Cabral</p><h3 class="t1">A melhor barbearia de <em>Curitiba.</em></h3><p class="sub">Corte, barba e cuidados masculinos com quem entende de estilo.</p><span class="btn">Agendar horário</span></div>
+        <div class="light"><h3 class="t2">O que você procura hoje?</h3><div class="minis"><div class="mini"><h4>Corte</h4><p>Tesoura ou máquina.</p><span class="btn">Agendar corte</span></div><div class="mini mini--f"><h4>Assinatura</h4><p>Corte e barba ilimitados.</p><span class="btn">Quero assinar</span></div></div></div></div>
+      <div class="tile col c-3"><div class="tile__tag"><b>3</b> Bordô <span>preto com vermelho de barbearia antiga</span><div class="swatches"><i style="background:#171211"></i><i style="background:#f5f1ea"></i><i style="background:#8a2a2a"></i></div></div>
+        <div class="dark"><p class="kick" style="color:#e2b98a">Barbearia · Batel e Cabral</p><h3 class="t1">A melhor barbearia de <em style="color:#e2b98a">Curitiba.</em></h3><p class="sub">Corte, barba e cuidados masculinos com quem entende de estilo.</p><span class="btn">Agendar horário</span></div>
+        <div class="light"><h3 class="t2">O que você procura hoje?</h3><div class="minis"><div class="mini"><h4>Corte</h4><p>Tesoura ou máquina.</p><span class="btn">Agendar corte</span></div><div class="mini mini--f"><h4>Assinatura</h4><p>Corte e barba ilimitados.</p><span class="btn">Quero assinar</span></div></div></div></div>
+      <div class="tile col c-4"><div class="tile__tag"><b>4</b> Verde garrafa <span>verde escuro de clube com dourado</span><div class="swatches"><i style="background:#13251d"></i><i style="background:#f3f0e6"></i><i style="background:#c9a45c"></i></div></div>
+        <div class="dark"><p class="kick">Barbearia · Batel e Cabral</p><h3 class="t1">A melhor barbearia de <em>Curitiba.</em></h3><p class="sub">Corte, barba e cuidados masculinos com quem entende de estilo.</p><span class="btn">Agendar horário</span></div>
+        <div class="light"><h3 class="t2">O que você procura hoje?</h3><div class="minis"><div class="mini"><h4>Corte</h4><p>Tesoura ou máquina.</p><span class="btn">Agendar corte</span></div><div class="mini mini--f"><h4>Assinatura</h4><p>Corte e barba ilimitados.</p><span class="btn">Quero assinar</span></div></div></div></div>
+    </div>
+  </section>
+
+  <section class="group" id="blocos">
+    <h2>3. Formato dos blocos</h2>
+    <p>Os mesmos três serviços, em três formatos.</p>
+    <div class="grid grid--3">
+      <div class="tile"><div class="tile__tag"><b>X</b> Tabela <span>lista com linhas, como tabela de barbearia</span></div>
+        <div class="blk b1">
+          <div class="item"><h4>Corte</h4><p>Tesoura ou máquina, pensado pro seu rosto.</p><span class="go">Agendar →</span></div>
+          <div class="item"><h4>Barba</h4><p>Toalha quente, navalha e acabamento.</p><span class="go">Agendar →</span></div>
+          <div class="item item--f"><h4>Clube</h4><p>Corte e barba ilimitados durante o mês.</p><span class="go">Assinar →</span></div>
+        </div></div>
+      <div class="tile"><div class="tile__tag"><b>Y</b> Moldura <span>canto reto com filete duplo</span></div>
+        <div class="blk b2"><div class="trio">
+          <div class="c"><h4>Corte</h4><p>Tesoura ou máquina.</p><span class="btn">Agendar</span></div>
+          <div class="c c--f"><h4>Clube</h4><p>Ilimitado no mês.</p><span class="btn">Assinar</span></div>
+          <div class="c"><h4>Barba</h4><p>Toalha e navalha.</p><span class="btn">Agendar</span></div>
+        </div></div></div>
+      <div class="tile"><div class="tile__tag"><b>Z</b> Arredondado <span>como está hoje</span></div>
+        <div class="blk b3"><div class="trio">
+          <div class="c"><h4>Corte</h4><p>Tesoura ou máquina.</p><span class="btn">Agendar</span></div>
+          <div class="c c--f"><h4>Clube</h4><p>Ilimitado no mês.</p><span class="btn">Assinar</span></div>
+          <div class="c"><h4>Barba</h4><p>Toalha e navalha.</p><span class="btn">Agendar</span></div>
+        </div></div></div>
+    </div>
+  </section>
+
+</div>
+</body>
+</html>

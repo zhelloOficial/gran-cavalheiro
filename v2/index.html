@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Gran Cavalheiro | Barbearia em Curitiba</title>
+<meta name="description" content="Corte e barba no Batel e no Cabral, em Curitiba. Agende seu horário.">
+<meta name="theme-color" content="#0d0c0b">
+<meta property="og:title" content="Gran Cavalheiro | Barbearia em Curitiba">
+<meta property="og:image" content="../assets/img/facade-night.webp">
+<link rel="icon" href="../assets/img/monogram.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&family=Geist:wght@300..700&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="../assets/img/reel-poster.jpg">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body class="is-loading">
+
+<div class="grain" aria-hidden="true"></div>
+
+<header class="nav">
+  <a href="#topo" class="nav__logo" aria-label="Gran Cavalheiro, voltar ao topo">
+    <img src="../assets/img/logo.png" alt="Gran Cavalheiro Barbearia" width="698" height="348">
+  </a>
+  <a class="btn btn--copper btn--sm" href="https://cashbarber.com.br/GranCavalheiro/" target="_blank" rel="noopener">Agendar</a>
+</header>
+
+<main id="topo">
+
+  <!-- ABERTURA: o vídeo passa por dentro das letras -->
+  <section class="intro">
+    <div class="intro__sticky">
+      <video class="intro__video" autoplay muted loop playsinline preload="auto" poster="../assets/img/reel-poster.jpg" data-src-desktop="../assets/video/reel.mp4" data-src-mobile="../assets/video/reel-m.mp4"></video>
+      <div class="intro__shade"></div>
+
+      <svg class="intro__mask" aria-hidden="true">
+        <defs>
+          <mask id="gc-mask" maskUnits="userSpaceOnUse" x="0" y="0" width="100%" height="100%">
+            <rect width="100%" height="100%" fill="#fff"/>
+            <g class="intro__word"><text id="w1" text-anchor="middle">GRAN</text></g>
+          </mask>
+        </defs>
+        <rect width="100%" height="100%" fill="#0d0c0b" mask="url(#gc-mask)"/>
+        <g class="intro__sub"><text id="w2" text-anchor="middle">CAVALHEIRO</text></g>
+      </svg>
+
+      <div class="intro__tag">
+        <span>Barbearia · Batel e Cabral · Curitiba</span>
+        <span class="intro__hint">Role <i></i></span>
+      </div>
+
+      <div class="intro__copy">
+        <h1 class="display">Seu visual <br class="m">fala <br class="d">antes <br class="m">de <em>você.</em></h1>
+        <div class="intro__row">
+          <a class="btn btn--copper btn--lg" href="https://cashbarber.com.br/GranCavalheiro/" target="_blank" rel="noopener">
+            Agendar horário
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+          <p class="proof"><span class="stars" aria-hidden="true">★★★★★</span> 5,0 no Google</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CENAS: uma cobre a outra -->
+  <section class="stack" aria-label="Tesoura, máquina e navalha">
+    <article class="card">
+      <div class="card__inner">
+        <picture>
+          <source media="(max-width: 760px)" srcset="../assets/img/scissors-v.webp">
+          <img src="../assets/img/scissors.webp" alt="Tesoura cortando o cabelo fio por fio" loading="lazy">
+        </picture>
+        <div class="card__dim"></div>
+        <h2 class="card__word display"><span>Tesoura.</span></h2>
+      </div>
+    </article>
+    <article class="card">
+      <div class="card__inner">
+        <picture>
+          <source media="(max-width: 760px)" srcset="../assets/img/clipper-gold.webp">
+          <img src="../assets/img/clipper.webp" alt="Máquina fazendo o degradê" loading="lazy">
+        </picture>
+        <div class="card__dim"></div>
+        <h2 class="card__word display"><span>Máquina.</span></h2>
+      </div>
+    </article>
+    <article class="card">
+      <div class="card__inner">
+        <picture>
+          <source media="(max-width: 760px)" srcset="../assets/img/razor.webp">
+          <img src="../assets/img/razor-face.webp" alt="Navalha no acabamento da barba" loading="lazy">
+        </picture>
+        <div class="card__dim"></div>
+        <h2 class="card__word display"><span>Navalha.</span></h2>
+      </div>
+    </article>
+  </section>
+
+  <!-- EXPERIÊNCIA -->
+  <section class="exp" aria-labelledby="exp-title">
+    <header class="head">
+      <p class="eyebrow">A experiência</p>
+      <h2 class="h2 display" id="exp-title">Como é ser atendido aqui.</h2>
+      <p class="head__lead">Ambiente exclusivo, atendimento sem pressa e uma equipe que entende de estilo masculino.</p>
+    </header>
+    <div class="exp__grid">
+      <article class="feat">
+        <div class="feat__img"><img src="../assets/img/chair-warm3-s.webp" alt="Cadeira de couro da barbearia" loading="lazy"></div>
+        <h3>Cadeira de massagem</h3>
+        <p>Você relaxa enquanto cuida do cabelo e da barba.</p>
+      </article>
+      <article class="feat">
+        <div class="feat__img"><img src="../assets/img/beer-s.webp" alt="Cerveja gelada no balcão" loading="lazy"></div>
+        <h3>Café e cerveja gelada</h3>
+        <p>Pra tomar enquanto espera ou durante o atendimento.</p>
+      </article>
+      <article class="feat">
+        <div class="feat__img"><img src="../assets/img/keune-jars-s.webp" alt="Pomadas Keune 1922" loading="lazy"></div>
+        <h3>Produtos Keune</h3>
+        <p>Linha profissional no corte, na barba e na finalização.</p>
+      </article>
+      <article class="feat">
+        <div class="feat__img"><img src="../assets/img/fade-side-s.webp" alt="Degradê sendo feito na máquina" loading="lazy"></div>
+        <h3>Hora marcada</h3>
+        <p>Agende online e seja atendido no seu horário, sem fila.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- SERVIÇOS -->
+  <section class="services" id="servicos" aria-labelledby="svc-title">
+    <header class="head head--row">
+      <div>
+        <p class="eyebrow">Serviços</p>
+        <h2 class="h2 display" id="svc-title">Do corte ao tratamento.</h2>
+      </div>
+      <a class="btn btn--line" href="https://cashbarber.com.br/GranCavalheiro/" target="_blank" rel="noopener">
+        Ver horários livres
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </header>
+    <div class="svc__grid">
+      <div class="svc">
+        <h3>Principais</h3>
+        <ul><li>Cabelo</li><li>Máquina</li><li>Barba</li><li>Acabamento de cabelo</li><li>Acabamento de barba</li></ul>
+      </div>
+      <div class="svc">
+        <h3>Extras</h3>
+        <ul><li>Sobrancelha</li><li>Hidratação</li><li>Matização de grisalho</li><li>Terapia facial</li><li>Depilação de nariz e orelha</li></ul>
+      </div>
+      <div class="svc">
+        <h3>Premium</h3>
+        <ul><li>Alinhamento térmico</li><li>Camuflagem</li><li>Protocolo Long &amp; Strong</li><li>Protocolo Detox</li><li>Protocolo Hydro</li></ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- CLUBE -->
+  <section class="club" id="clube">
+    <figure class="club__media">
+      <img src="../assets/img/chair-warm.webp" alt="Cadeira de barbeiro de couro sob luz quente" loading="lazy">
+    </figure>
+    <div class="club__body">
+      <p class="eyebrow">Clube Gran Cavalheiro</p>
+      <h2 class="club__title display">Corte e barba <em>quantas vezes quiser.</em></h2>
+      <p class="club__lead">Assinatura mensal: você paga uma vez e vem quando quiser.</p>
+      <ul class="club__list">
+        <li><span>01</span>Corte e barba ilimitados durante o mês</li>
+        <li><span>02</span>Benefícios em produtos e serviços extras</li>
+        <li><span>03</span>Agendamento online, com hora marcada</li>
+      </ul>
+      <div class="club__cta">
+        <a class="btn btn--copper btn--lg" href="https://wa.me/5541988697721?text=Ol%C3%A1!%20Quero%20saber%20do%20Clube%20Gran%20Cavalheiro." target="_blank" rel="noopener">
+          Assinar o Clube
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+        <small>Planos e valores pelo WhatsApp.</small>
+      </div>
+    </div>
+  </section>
+
+  <!-- AVALIAÇÕES -->
+  <section class="reviews" aria-labelledby="rev-title">
+    <div class="reviews__score">
+      <p class="eyebrow">Avaliações</p>
+      <h2 class="score display" id="rev-title"><span data-count>5,0</span></h2>
+      <div class="score__stars" aria-label="5 de 5 estrelas">★★★★★</div>
+      <p class="muted">Nota no Google, com mais de 200 avaliações.</p>
+      <a class="reviews__link" href="https://www.google.com/maps/search/Gran+Cavalheiro+Barbearia+Curitiba" target="_blank" rel="noopener">Ler todas no Google</a>
+    </div>
+    <div class="reviews__list">
+      <blockquote class="quote">
+        <p>“A minha experiência na Gran Cavalheiro foi incrível! Super atencioso e um profissional de primeira. Mudou completamente a forma como vejo meu cabelo.”</p>
+        <cite>Renan</cite>
+      </blockquote>
+      <blockquote class="quote">
+        <p>“Excelente corte, muito bom o tratamento e as explicações. Até minha família comentou que ficou excelente quando cheguei em casa.”</p>
+        <cite>João Tardelli</cite>
+      </blockquote>
+      <blockquote class="quote">
+        <p>“Excelente barbearia e excelentes profissionais! Frequento desde a abertura e é sempre uma experiência incrível.”</p>
+        <cite>Victor Manuel</cite>
+      </blockquote>
+    </div>
+  </section>
+
+  <!-- UNIDADES: escolher uma já é agendar -->
+  <section class="units" id="unidades" aria-label="Escolha a unidade">
+    <article class="unit">
+      <img src="../assets/img/chairs-row.webp" alt="Fileira de cadeiras de barbeiro" loading="lazy">
+      <div class="unit__body">
+        <span class="status" data-status><i></i><b></b></span>
+        <h3 class="display">Batel</h3>
+        <p>Av. do Batel, 1700, loja 2</p>
+        <p class="muted">Seg a sex 9h às 20h · Sáb 9h às 18h</p>
+        <div class="unit__links">
+          <a class="unit__main" href="https://cashbarber.com.br/GranCavalheiro/" target="_blank" rel="noopener">Agendar no Batel</a>
+          <a href="https://www.google.com/maps/search/?api=1&query=Av.+do+Batel,+1700,+Curitiba" target="_blank" rel="noopener">Como chegar</a>
+          <a href="tel:+554135288586">(41) 3528-8586</a>
+        </div>
+      </div>
+    </article>
+    <article class="unit">
+      <img src="../assets/img/chair-warm2.webp" alt="Cadeira de couro sob luz quente" loading="lazy">
+      <div class="unit__body">
+        <span class="status" data-status><i></i><b></b></span>
+        <h3 class="display">Cabral</h3>
+        <p>Av. Munhoz da Rocha, 752</p>
+        <p class="muted">Seg a sex 9h às 20h · Sáb 9h às 18h</p>
+        <div class="unit__links">
+          <a class="unit__main" href="https://cashbarber.com.br/GranCavalheiro/" target="_blank" rel="noopener">Agendar no Cabral</a>
+          <a href="https://www.google.com/maps/search/?api=1&query=Av.+Munhoz+da+Rocha,+752,+Curitiba" target="_blank" rel="noopener">Como chegar</a>
+          <a href="tel:+554132066817">(41) 3206-6817</a>
+        </div>
+      </div>
+    </article>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="footer__brand">
+    <img src="../assets/img/logo.png" alt="Gran Cavalheiro" width="698" height="348" loading="lazy">
+    <a class="btn btn--copper" href="https://cashbarber.com.br/GranCavalheiro/" target="_blank" rel="noopener">Agendar horário</a>
+  </div>
+  <div class="footer__cols">
+    <div><small>Batel</small><p>Av. do Batel, 1700, loja 2<br>(41) 3528-8586</p></div>
+    <div><small>Cabral</small><p>Av. Munhoz da Rocha, 752<br>(41) 3206-6817</p></div>
+    <div><small>Horário</small><p>Seg a sex, 9h às 20h<br>Sáb, 9h às 18h</p></div>
+    <div><small>WhatsApp</small><p><a href="https://wa.me/5541988697721" target="_blank" rel="noopener">(41) 98869-7721</a></p></div>
+  </div>
+  <p class="footer__legal">© 2026 Gran Cavalheiro Barbearia · Curitiba, PR</p>
+</footer>
+
+<div class="mbar">
+  <a class="btn btn--copper" href="https://cashbarber.com.br/GranCavalheiro/" target="_blank" rel="noopener">Agendar horário</a>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/ScrollTrigger.min.js"></script>
+<script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+<script src="main.js"></script>
+</body>
+</html>
