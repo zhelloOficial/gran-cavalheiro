@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Cadastro | Gran Cavalheiro</title>
+<meta name="description" content="Faça seu cadastro na Gran Cavalheiro Barbearia, no Batel e no Cabral, em Curitiba.">
+<meta name="theme-color" content="#f5f1ea">
+<meta name="robots" content="noindex">
+<link rel="icon" href="../assets/img/monogram-dark.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,600..900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css?v=9">
+</head>
+<body class="signup-page">
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+    <symbol id="check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></symbol>
+    <symbol id="wa" viewBox="0 0 24 24"><path d="M20 12a8 8 0 0 1-11.8 7L4 20l1-4.1A8 8 0 1 1 20 12z"/><path d="M9 9.5c.3 1.6 1.8 3.4 3.6 4.3l1.2-1.1 1.7.8-.4 1.6c-3 .3-6.5-3.1-6.6-6l1.5-.5.8 1.6z"/></symbol>
+  </defs>
+</svg>
+
+<header class="header">
+  <div class="wrap header__in">
+    <a href="/" class="header__logo" aria-label="Gran Cavalheiro, início">
+      <img src="../assets/img/logo-dark.png" alt="Gran Cavalheiro Barbearia" width="698" height="348">
+    </a>
+    <a class="btn btn--line signup__back" href="/">Voltar ao site</a>
+  </div>
+</header>
+
+<main class="signup">
+  <div class="signup__card">
+    <div id="signup-form-wrap">
+      <p class="signup__kicker">Gran Cavalheiro · Batel e Cabral</p>
+      <h1 class="d signup__title">Faça seu <em>cadastro</em></h1>
+      <p class="signup__lead">Leva um minuto. A gente usa seus dados só pro seu atendimento.</p>
+
+      <form id="signup" class="signup__form" novalidate>
+        <div class="field">
+          <label for="f-nome">Nome completo</label>
+          <input id="f-nome" name="nome" type="text" autocomplete="name" maxlength="120" required>
+          <p class="field__err" id="e-nome" aria-live="polite"></p>
+        </div>
+
+        <div class="field">
+          <label for="f-email">E-mail</label>
+          <input id="f-email" name="email" type="email" autocomplete="email" inputmode="email" maxlength="254" required>
+          <p class="field__err" id="e-email" aria-live="polite"></p>
+        </div>
+
+        <div class="field-row">
+          <div class="field">
+            <label for="f-telefone">Telefone (WhatsApp)</label>
+            <input id="f-telefone" name="telefone" type="tel" autocomplete="tel-national" inputmode="numeric" placeholder="(41) 99999-9999" maxlength="16" required>
+            <p class="field__err" id="e-telefone" aria-live="polite"></p>
+          </div>
+          <div class="field">
+            <label for="f-nascimento">Data de nascimento</label>
+            <input id="f-nascimento" name="nascimento" type="text" autocomplete="bday" inputmode="numeric" placeholder="dd/mm/aaaa" maxlength="10" required>
+            <p class="field__err" id="e-nascimento" aria-live="polite"></p>
+          </div>
+        </div>
+
+        <fieldset class="field">
+          <legend>Como conheceu a Gran Cavalheiro?</legend>
+          <div class="chips" id="f-como">
+            <label class="chip"><input type="radio" name="comoConheceu" value="Instagram"><span>Instagram</span></label>
+            <label class="chip"><input type="radio" name="comoConheceu" value="Indicação"><span>Indicação</span></label>
+            <label class="chip"><input type="radio" name="comoConheceu" value="Google"><span>Google</span></label>
+            <label class="chip"><input type="radio" name="comoConheceu" value="Fachada da loja"><span>Fachada da loja</span></label>
+            <label class="chip"><input type="radio" name="comoConheceu" value="Facebook"><span>Facebook</span></label>
+            <label class="chip"><input type="radio" name="comoConheceu" value="Anúncios"><span>Anúncios</span></label>
+            <label class="chip"><input type="radio" name="comoConheceu" value="Site"><span>Site</span></label>
+            <label class="chip"><input type="radio" name="comoConheceu" value="Eventos"><span>Eventos</span></label>
+            <label class="chip"><input type="radio" name="comoConheceu" value="Panfleto"><span>Panfleto</span></label>
+            <label class="chip"><input type="radio" name="comoConheceu" value="Cortesia"><span>Cortesia</span></label>
+          </div>
+          <p class="field__err" id="e-comoConheceu" aria-live="polite"></p>
+        </fieldset>
+
+        <div class="hp" aria-hidden="true">
+          <label for="f-empresa">Empresa</label>
+          <input id="f-empresa" name="empresa" type="text" tabindex="-1" autocomplete="off">
+        </div>
+
+        <p class="signup__err" id="e-geral" role="alert"></p>
+        <button class="btn btn--copper btn--lg signup__submit" type="submit">
+          <span class="signup__label">Fazer cadastro</span> <svg class="i"><use href="#arrow"/></svg>
+        </button>
+      </form>
+    </div>
+
+    <div id="signup-done" class="signup__done" hidden>
+      <span class="signup__ok"><svg class="i"><use href="#check"/></svg></span>
+      <h1 class="d signup__title" tabindex="-1">Cadastro <em>feito</em></h1>
+      <p class="signup__lead">Obrigado, <span id="done-nome"></span>. A partir de agora você já é cliente da Gran Cavalheiro.</p>
+      <div class="ctas ctas--center">
+        <a class="btn btn--copper btn--lg" href="https://cashbarber.com.br/GranCavalheiro/" target="_blank" rel="noopener">Agendar horário <svg class="i"><use href="#arrow"/></svg></a>
+        <a class="btn btn--line btn--lg" href="/">Voltar ao site</a>
+      </div>
+    </div>
+  </div>
+</main>
+
+<script src="../cadastro-form.js?v=1"></script>
+</body>
+</html>
