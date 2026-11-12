@@ -1,0 +1,126 @@
+/* Cadastro em etapas: foto da casa de um lado, uma pergunta por vez do outro. */
+body.cad-page { background: var(--paper); }
+.cad-page [hidden] { display: none !important; }
+body.cad-page::before { z-index: 0; }
+
+.cad { position: relative; z-index: 1; display: grid; grid-template-columns: minmax(400px, 44%) minmax(0, 1fr); min-height: 100vh; min-height: 100dvh; }
+
+/* lado da foto */
+.cad__side { position: sticky; top: 0; height: 100vh; height: 100dvh; display: flex; flex-direction: column; padding: clamp(28px, 3.4vw, 48px); color: var(--cream); background: var(--ink); overflow: hidden; isolation: isolate; }
+.cad__photo { position: absolute; inset: 0; z-index: -1; background: url("../assets/img/chair-warm.webp") center 40% / cover no-repeat; transform: scale(1.04); animation: cadPhoto 14s var(--ease) forwards; }
+.cad__photo::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(20,18,17,0.55) 0%, rgba(20,18,17,0.1) 28%, rgba(20,18,17,0.78) 52%, rgba(20,18,17,0.97) 100%), linear-gradient(90deg, rgba(20,18,17,0.5) 0%, rgba(20,18,17,0) 60%); }
+@keyframes cadPhoto { to { transform: scale(1); } }
+.cad__side-top { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.cad__logo img { width: 132px; height: auto; }
+.cad__exit { display: inline-flex; align-items: center; height: 40px; padding: 0 18px; border-radius: 999px; border: 1.5px solid rgba(245,241,234,0.4); font-size: 14px; font-weight: 600; transition: background 0.25s var(--ease), color 0.25s var(--ease), border-color 0.25s var(--ease); }
+.cad__exit:hover { background: var(--cream); color: var(--ink); border-color: var(--cream); }
+.cad__pitch { margin-top: auto; }
+.cad__kicker { font-size: 13px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--copper-2); }
+.cad__headline { margin-top: 14px; font-size: clamp(64px, 6.6vw, 112px); color: var(--cream); }
+.cad__headline em { color: var(--copper); }
+.cad__sub { margin-top: 18px; max-width: 24em; font-size: 16px; color: rgba(245,241,234,0.72); }
+.cad__steps { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; margin: 36px 0 0; padding: 0; list-style: none; counter-reset: none; }
+.cad__steps li { position: relative; padding-top: 14px; font-size: 13px; font-weight: 600; color: rgba(245,241,234,0.42); transition: color 0.4s var(--ease); }
+.cad__steps li::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 3px; border-radius: 3px; background: rgba(245,241,234,0.16); }
+.cad__steps li::after { content: ""; position: absolute; top: 0; left: 0; height: 3px; width: 0; border-radius: 3px; background: var(--copper); transition: width 0.6s var(--ease); }
+.cad__steps li span { display: block; margin-bottom: 2px; font-family: var(--cartaz); font-stretch: 62%; font-weight: 800; font-size: 22px; line-height: 1; }
+.cad__steps li.is-done, .cad__steps li.is-current { color: var(--cream); }
+.cad__steps li.is-done::after, .cad__steps li.is-current::after { width: 100%; }
+.cad__steps li.is-current span { color: var(--copper); }
+
+/* lado do formulário */
+.cad__main { display: flex; align-items: center; justify-content: center; padding: clamp(40px, 6vw, 96px) clamp(20px, 6vw, 96px); }
+.cad__panel { width: 100%; max-width: 560px; }
+.cad__progress { display: none; }
+.cad__count { font-size: 14px; font-weight: 600; color: var(--muted); }
+.cad__count b { color: var(--ink); }
+.cad__bar { height: 4px; margin-top: 10px; border-radius: 4px; background: var(--surface-2); overflow: hidden; }
+.cad__bar i { display: block; height: 100%; width: 25%; border-radius: 4px; background: linear-gradient(90deg, var(--copper-ink), var(--copper)); transition: width 0.6s var(--ease); }
+
+.cad__form { display: grid; gap: 28px; }
+.step { display: grid; gap: 22px; min-width: 0; margin: 0; padding: 0; border: 0; }
+.step[hidden] { display: none; }
+.step.is-in { animation: stepIn 0.55s var(--ease) both; }
+.cad__form[data-dir="back"] .step.is-in { animation-name: stepBack; }
+@keyframes stepIn { from { opacity: 0; transform: translateX(28px); } to { opacity: 1; transform: none; } }
+@keyframes stepBack { from { opacity: 0; transform: translateX(-28px); } to { opacity: 1; transform: none; } }
+.step__q { float: left; width: 100%; padding: 0; font-size: clamp(48px, 5.2vw, 80px); }
+.step__q + * { clear: both; }
+.step__hint { margin-top: -8px; font-size: 16px; color: var(--muted); }
+
+.field { display: grid; gap: 8px; min-width: 0; }
+.field label { font-size: 14px; font-weight: 600; color: var(--ink); }
+.field input { width: 100%; height: 62px; padding: 0 20px; border-radius: 18px; border: 1.5px solid var(--line); background: rgba(255,255,255,0.72); font: inherit; font-size: 18px; color: var(--ink); transition: border-color 0.2s, background 0.2s, box-shadow 0.2s; }
+.field input::placeholder { color: rgba(107,98,88,0.55); }
+.field input:hover { border-color: rgba(20,18,17,0.28); }
+.field input:focus { outline: none; border-color: var(--copper-ink); background: #fff; box-shadow: 0 0 0 4px rgba(200,147,94,0.18); }
+.field input[aria-invalid="true"] { border-color: #b3402f; }
+.field__err { font-size: 14px; color: #9c2f22; }
+.field__err:empty { display: none; }
+
+.tiles { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+.tile { position: relative; cursor: pointer; }
+.tile input { position: absolute; opacity: 0; pointer-events: none; }
+.tile span { display: flex; align-items: center; justify-content: space-between; gap: 10px; height: 58px; padding: 0 18px; border-radius: 16px; border: 1.5px solid var(--line); background: rgba(255,255,255,0.6); font-size: 16px; font-weight: 600; color: var(--ink); transition: background 0.2s, color 0.2s, border-color 0.2s, transform 0.2s var(--ease); }
+.tile span::after { content: ""; width: 18px; height: 18px; flex: none; border-radius: 50%; border: 1.5px solid rgba(20,18,17,0.25); transition: border-color 0.2s, background 0.2s, box-shadow 0.2s; }
+.tile:hover span { border-color: rgba(20,18,17,0.35); }
+.tile:active span { transform: scale(0.98); }
+.tile input:checked + span { background: var(--ink); border-color: var(--ink); color: var(--cream); }
+.tile input:checked + span::after { border-color: var(--copper); background: var(--copper); box-shadow: inset 0 0 0 4px var(--ink); }
+.tile input:focus-visible + span { outline: 2px solid var(--copper); outline-offset: 3px; }
+.tiles[aria-invalid="true"] .tile span { border-color: rgba(179,64,47,0.5); }
+
+.hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+.cad__err { font-size: 15px; color: #9c2f22; }
+.cad__err:empty { display: none; }
+
+.cad__nav { display: flex; align-items: center; gap: 16px; }
+.cad__back { display: inline-flex; align-items: center; gap: 8px; height: 56px; padding: 0 6px; font-size: 15px; font-weight: 600; color: var(--muted); transition: color 0.2s; }
+.cad__back:hover { color: var(--ink); }
+.cad__back .i { transition: transform 0.3s var(--ease); }
+.cad__back:hover .i { transform: translateX(-4px); }
+.cad__back[hidden] { display: none; }
+.cad__next { margin-left: auto; min-width: 220px; }
+.cad__next:disabled { opacity: 0.7; cursor: progress; }
+
+.cad__alt { margin-top: 36px; padding-top: 24px; border-top: 1px solid var(--line); font-size: 15px; color: var(--muted); }
+.cad__alt a { color: var(--ink); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
+
+.cad__done { display: grid; gap: 22px; animation: stepIn 0.6s var(--ease) both; }
+.cad__done[hidden] { display: none; }
+.cad__done h1:focus { outline: none; }
+.cad__ok { display: grid; place-items: center; width: 72px; height: 72px; border-radius: 50%; background: var(--ink); color: var(--copper); animation: okPop 0.7s var(--ease) both; }
+.cad__ok .i { width: 34px; height: 34px; stroke-width: 2.5; }
+@keyframes okPop { from { transform: scale(0.4); opacity: 0; } to { transform: none; opacity: 1; } }
+.cad__done-ctas { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 6px; }
+
+/* celular e tablet: foto vira faixa no topo, formulário sobe por cima */
+@media (max-width: 900px) {
+  .cad { display: flex; flex-direction: column; }
+  .cad__side { position: relative; height: auto; min-height: 0; padding: 18px 20px 64px; }
+  .cad__photo { background-position: center 30%; }
+  .cad__photo::after { background: linear-gradient(180deg, rgba(20,18,17,0.6) 0%, rgba(20,18,17,0.35) 45%, rgba(20,18,17,0.92) 100%); }
+  .cad__logo img { width: 104px; }
+  .cad__exit { height: 36px; padding: 0 14px; font-size: 13px; }
+  .cad__pitch { margin-top: 64px; }
+  .cad__kicker { font-size: 12px; }
+  .cad__headline { margin-top: 8px; font-size: clamp(48px, 13vw, 72px); }
+  .cad__sub { margin-top: 10px; font-size: 15px; }
+  .cad__steps { display: none; }
+  .cad__main { position: relative; display: block; flex: 1; margin-top: -36px; padding: 26px 20px 40px; border-radius: 28px 28px 0 0; background: var(--paper); }
+  .cad__progress { display: block; margin-bottom: 26px; }
+  .cad__form { gap: 24px; }
+  .step { gap: 18px; }
+  .step__q { font-size: clamp(42px, 11.5vw, 60px); }
+  .cad__next { min-width: 0; flex: 1; }
+  .cad__alt { margin-top: 28px; text-align: center; }
+  .cad__done-ctas .btn { flex: 1 1 100%; }
+  .tile span { height: 54px; padding: 0 14px; font-size: 15px; }
+  .tile span::after { display: none; }
+}
+@media (max-width: 380px) {
+  .tiles { grid-template-columns: minmax(0, 1fr); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .cad__photo, .step.is-in, .cad__done, .cad__ok { animation: none; }
+}
