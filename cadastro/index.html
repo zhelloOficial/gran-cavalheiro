@@ -13,7 +13,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,600..900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="preload" as="image" href="../assets/img/chair-warm.webp">
 <link rel="stylesheet" href="../styles.css?v=11">
-<link rel="stylesheet" href="cadastro.css?v=1">
+<link rel="stylesheet" href="cadastro.css?v=2">
 </head>
 <body class="cad-page">
 
@@ -56,7 +56,7 @@
 
       <form id="signup" class="cad__form" novalidate>
         <fieldset class="step" data-step="1">
-          <legend class="d step__q">Como a gente <em>te chama?</em></legend>
+          <legend class="step__q">Como a gente <em>te chama?</em></legend>
           <p class="step__hint">Nome e sobrenome, do jeito que você gosta.</p>
           <div class="field">
             <label for="f-nome">Nome completo</label>
@@ -66,7 +66,7 @@
         </fieldset>
 
         <fieldset class="step" data-step="2" hidden>
-          <legend class="d step__q">Onde a gente <em>te acha?</em></legend>
+          <legend class="step__q">Onde a gente <em>te acha?</em></legend>
           <p class="step__hint">Pra confirmar horário e avisar de novidade. Sem spam.</p>
           <div class="field">
             <label for="f-telefone">WhatsApp</label>
@@ -81,7 +81,7 @@
         </fieldset>
 
         <fieldset class="step" data-step="3" hidden>
-          <legend class="d step__q">Quando é seu <em>aniversário?</em></legend>
+          <legend class="step__q">Quando é seu <em>aniversário?</em></legend>
           <p class="step__hint">Dia, mês e ano.</p>
           <div class="field">
             <label for="f-nascimento">Data de nascimento</label>
@@ -91,7 +91,7 @@
         </fieldset>
 
         <fieldset class="step" data-step="4" hidden>
-          <legend class="d step__q">Como conheceu <em>a Gran?</em></legend>
+          <legend class="step__q">Como conheceu <em>a Gran?</em></legend>
           <p class="step__hint">Escolha uma opção.</p>
           <div class="tiles" id="f-como">
             <label class="tile"><input type="radio" name="comoConheceu" value="Instagram"><span>Instagram</span></label>
@@ -125,7 +125,7 @@
 
       <div id="signup-done" class="cad__done" hidden>
         <span class="cad__ok"><svg class="i"><use href="#check"/></svg></span>
-        <h1 class="d step__q" tabindex="-1">Tudo certo, <em id="done-nome"></em></h1>
+        <h1 class="step__q" tabindex="-1">Tudo certo, <em id="done-nome"></em></h1>
         <p class="step__hint">Seu cadastro está feito. Agora é só escolher o horário.</p>
         <div class="cad__done-ctas">
           <a class="btn btn--copper btn--lg" href="https://cashbarber.com.br/GranCavalheiro/" target="_blank" rel="noopener">Agendar horário <svg class="i"><use href="#arrow"/></svg></a>
