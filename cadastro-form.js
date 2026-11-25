@@ -1,5 +1,5 @@
 // Agendamento em 7 etapas (2026-11-25): nome, contato, aniversário (o mesmo
-// cadastro do Cash Barber), serviço, barbeiro, dia e hora livres, e
+// cadastro do Cash Barber), unidade e serviço, barbeiro, dia e hora livres, e
 // confirmação. Os horários vêm do Venda Perfeita (/api/agenda), que já sabe o
 // que está ocupado no Cash Barber. No fim abre o WhatsApp da Gran com tudo
 // escrito e guarda o lead no VP (/api/cadastro). Quem marca no Cash Barber é a
@@ -23,6 +23,8 @@
   var barWrap = bar.parentNode;
   var dots = document.querySelectorAll("[data-dot]");
   var svcBox = document.getElementById("f-servico");
+  var unitBox = document.getElementById("f-unidade");
+  var svcHint = document.getElementById("svc-hint");
   var svcLoading = document.getElementById("svc-loading");
   var barberBox = document.getElementById("f-barbeiro");
   var dayBox = document.getElementById("f-dia");
@@ -34,7 +36,7 @@
   var catalog = null; // { servicos, profissionais }
   var catalogError = "";
   var catalogLoading = false;
-  var pick = { servico: null, barbeiro: "", dia: "", hora: "" };
+  var pick = { unidade: "", servico: null, barbeiro: "", dia: "", hora: "" };
   var daysFor = ""; // chave serviço|barbeiro dos dias carregados
   var timesFor = ""; // chave serviço|barbeiro|dia dos horários carregados
   var loadSeq = 0;
@@ -150,13 +152,51 @@
       catalog = res.d.data;
       catalogError = "";
       svcLoading.hidden = true;
+      // Uma unidade só: já vale ela.
+      if (units().length === 1) pick.unidade = units()[0];
+      renderUnits();
       renderServices();
     });
   }
 
+  // ---------- unidade ----------
+  // O VP manda `unidades` quando a empresa tem mais de um endereço (Gran:
+  // Batel e Cabral) e a `unidade` de cada barbeiro.
+  function units() { return (catalog && catalog.unidades) || []; }
+  function hasUnits() { return units().length > 1; }
+  function renderUnits() {
+    unitBox.hidden = !hasUnits();
+    if (!hasUnits()) return;
+    svcHint.textContent = "Escolha a unidade e o serviço. O tempo e o valor aparecem do lado.";
+    unitBox.replaceChildren();
+    units().forEach(function (u) {
+      unitBox.appendChild(option("unidade", u, pick.unidade === u, el("span", "", u)));
+    });
+  }
+  unitBox.addEventListener("change", function (e) {
+    var v = e.target ? e.target.value : "";
+    if (v === pick.unidade) return;
+    pick.unidade = v;
+    // Barbeiro e horário da outra unidade não valem aqui.
+    pick.barbeiro = "";
+    pick.dia = "";
+    pick.hora = "";
+    if (pick.servico && !barbersFor(pick.servico).length) pick.servico = null;
+    setErr("unidade", "");
+    setErr("servico", "");
+    renderServices();
+  });
+
+  function servicesShown() {
+    // Com mais de uma unidade, a lista só aparece depois dela (muda de uma pra outra).
+    if (hasUnits() && !pick.unidade) return [];
+    if (!pick.unidade) return catalog.servicos;
+    return catalog.servicos.filter(function (s) { return barbersFor(s).length > 0; });
+  }
+
   function renderServices() {
     svcBox.replaceChildren();
-    catalog.servicos.forEach(function (s) {
+    servicesShown().forEach(function (s) {
       var label = el("span");
       var main = el("strong", "svc__name", s.nome);
       var meta = el("small", "svc__meta");
@@ -189,7 +229,11 @@
   // ---------- barbeiro ----------
   function barbersFor(s) {
     if (!catalog || !s) return [];
-    return catalog.profissionais.filter(function (p) { return s.profissionais.indexOf(p.id) !== -1; });
+    return catalog.profissionais.filter(function (p) {
+      if (s.profissionais.indexOf(p.id) === -1) return false;
+      // Barbeiro sem unidade no VP aparece nas duas.
+      return !pick.unidade || !p.unidade || p.unidade === pick.unidade;
+    });
   }
   function hasBarberStep() {
     return !!(catalog && catalog.escolheProfissional && barbersFor(pick.servico).length > 1);
@@ -222,8 +266,34 @@
     return q;
   }
 
+  // "Sem preferência" dentro de uma unidade: pergunta por barbeiro daquela
+  // unidade e junta, porque o VP sem barbeiro escolhido olha todo mundo.
+  function fetchSlots(q) {
+    var ids = !pick.barbeiro && hasUnits() ? barbersFor(pick.servico).map(function (p) { return p.id; }) : [];
+    if (!ids.length) return api(q);
+    return Promise.all(ids.map(function (id) {
+      var one = Object.assign({}, q, { profissional: id });
+      return api(one);
+    })).then(function (all) {
+      var good = all.filter(function (r) { return r.ok && r.d.data; });
+      if (!good.length) return all[0];
+      if (q.op === "dias") {
+        var byDay = {};
+        good.forEach(function (r) {
+          (r.d.data.dias || []).forEach(function (d) { byDay[d.data] = (byDay[d.data] || 0) + (d.vagas || 0); });
+        });
+        var dias = Object.keys(byDay).sort().map(function (k) { return { data: k, vagas: byDay[k] }; });
+        return { ok: true, d: { data: { dias: dias } } };
+      }
+      var seen = {};
+      good.forEach(function (r) { (r.d.data.horarios || []).forEach(function (h) { seen[h.hora] = h; }); });
+      var horarios = Object.keys(seen).sort().map(function (k) { return seen[k]; });
+      return { ok: true, d: { data: { horarios: horarios } } };
+    });
+  }
+
   function loadDays() {
-    var key = pick.servico.id + "|" + pick.barbeiro;
+    var key = pick.unidade + "|" + pick.servico.id + "|" + pick.barbeiro;
     if (key === daysFor && dayBox.children.length) return;
     daysFor = key;
     timesFor = "";
@@ -236,7 +306,7 @@
     q.op = "dias";
     q.de = today;
     q.ate = addDays(today, DAYS_AHEAD - 1);
-    api(q).then(function (res) {
+    fetchSlots(q).then(function (res) {
       if (seq !== loadSeq) return;
       if (!res.ok) {
         daysFor = "";
@@ -265,7 +335,7 @@
   }
 
   function loadTimes() {
-    var key = pick.servico.id + "|" + pick.barbeiro + "|" + pick.dia;
+    var key = pick.unidade + "|" + pick.servico.id + "|" + pick.barbeiro + "|" + pick.dia;
     if (key === timesFor) return;
     timesFor = key;
     var seq = ++loadSeq;
@@ -274,7 +344,7 @@
     var q = baseQuery();
     q.op = "horarios";
     q.data = pick.dia;
-    api(q).then(function (res) {
+    fetchSlots(q).then(function (res) {
       if (seq !== loadSeq) return;
       if (!res.ok) {
         timesFor = "";
@@ -314,16 +384,19 @@
   function summaryRows() {
     var s = pick.servico;
     var extra = [durationOf(s.duracaoMin), priceOf(s)].filter(Boolean).join(", ");
-    return [
+    var rows = [
       ["Nome", form.elements.nome.value.trim()],
       ["WhatsApp", phone.value],
       ["E-mail", form.elements.email.value.trim()],
       ["Aniversário", birth.value],
+    ];
+    if (hasUnits()) rows.push(["Unidade", pick.unidade]);
+    return rows.concat([
       ["Serviço", s.nome + (extra ? " (" + extra + ")" : "")],
       ["Barbeiro", barberName()],
       ["Dia", dayParts(pick.dia).long],
       ["Horário", pick.hora],
-    ];
+    ]);
   }
 
   function renderSummary() {
@@ -353,14 +426,16 @@
     }
   }
 
-  var FIELDS = { 1: ["nome"], 2: ["telefone", "email"], 3: ["nascimento"], 4: ["servico"], 5: [], 6: ["hora"], 7: [] };
+  var FIELDS = { 1: ["nome"], 2: ["telefone", "email"], 3: ["nascimento"], 4: ["unidade", "servico"], 5: [], 6: ["hora"], 7: [] };
   var RULES = {
     nome: function () { return form.elements.nome.value.trim().split(/\s+/).filter(Boolean).length < 2 ? "Escreva nome e sobrenome." : ""; },
     telefone: function () { var t = digits(phone.value); return t.length < 10 || t.length > 11 ? "Use DDD + número." : ""; },
     email: function () { return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(form.elements.email.value.trim()) ? "" : "Confira o e-mail."; },
     nascimento: function () { return validDate(birth.value) ? "" : "Use dd/mm/aaaa."; },
+    unidade: function () { return hasUnits() && !pick.unidade ? "Escolha a unidade." : ""; },
     servico: function () {
       if (!catalog) return catalogError ? "" : "Espere os serviços carregarem.";
+      if (hasUnits() && !pick.unidade) return "";
       return pick.servico ? "" : "Escolha um serviço.";
     },
     hora: function () { return pick.dia && pick.hora ? "" : "Escolha o dia e o horário."; },
@@ -372,7 +447,8 @@
   }
 
   function focusField(name) {
-    var target = name === "servico" ? svcBox.querySelector("input:checked, input") :
+    var target = name === "unidade" ? unitBox.querySelector("input:checked, input") || svcBox.querySelector("input:checked, input") :
+      name === "servico" ? svcBox.querySelector("input:checked, input") :
       name === "hora" ? timeBox.querySelector("input:checked, input") || dayBox.querySelector("input:checked") :
       name ? form.elements[name] : null;
     if (!target && step === 5) target = barberBox.querySelector("input:checked");

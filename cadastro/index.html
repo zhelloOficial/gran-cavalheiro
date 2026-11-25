@@ -92,7 +92,9 @@
 
         <fieldset class="step" data-step="4" hidden>
           <legend class="step__q">Qual <em>serviço?</em></legend>
-          <p class="step__hint">Escolha um. O tempo e o valor aparecem do lado.</p>
+          <p class="step__hint" id="svc-hint">Escolha um. O tempo e o valor aparecem do lado.</p>
+          <div class="tiles units" id="f-unidade" role="radiogroup" aria-label="Unidade" hidden></div>
+          <p class="field__err" id="e-unidade" aria-live="polite"></p>
           <div class="svc" id="f-servico" role="radiogroup" aria-label="Serviço"></div>
           <p class="cad__loading" id="svc-loading">Carregando os serviços...</p>
           <p class="field__err" id="e-servico" aria-live="polite"></p>

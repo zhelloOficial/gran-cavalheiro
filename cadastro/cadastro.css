@@ -131,6 +131,7 @@ body.cad-page::before { z-index: 0; }
 .cad__main { overflow-x: clip; }
 .cad__loading { font-size: 15px; color: var(--muted); }
 .cad__loading:empty { display: none; }
+.units { margin-bottom: 18px; }
 .svc { display: grid; gap: 8px; }
 .svc__item > span { height: auto; min-height: 62px; padding: 12px 18px; }
 .svc__item > span::after { display: none; }
