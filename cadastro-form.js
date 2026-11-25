@@ -96,6 +96,7 @@
       long: d.toLocaleDateString("pt-BR", { weekday: "long", day: "2-digit", month: "2-digit", timeZone: "UTC" }),
     };
   }
+  function upperFirst(t) { return t.charAt(0).toUpperCase() + t.slice(1); }
   function todayIso() {
     var p = new Intl.DateTimeFormat("en-CA", { timeZone: "America/Sao_Paulo", year: "numeric", month: "2-digit", day: "2-digit" }).format(new Date());
     return p;
@@ -394,7 +395,7 @@
     return rows.concat([
       ["Serviço", s.nome + (extra ? " (" + extra + ")" : "")],
       ["Barbeiro", barberName()],
-      ["Dia", dayParts(pick.dia).long],
+      ["Dia", upperFirst(dayParts(pick.dia).long)],
       ["Horário", pick.hora],
     ]);
   }

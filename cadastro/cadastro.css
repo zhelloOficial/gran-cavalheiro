@@ -160,11 +160,15 @@ body.cad-page::before { z-index: 0; }
 .sum div:nth-child(even) { background: rgba(20,18,17,0.03); }
 .sum dt { font-size: 14px; font-weight: 600; color: var(--muted); }
 .sum dd { margin: 0; font-size: 15px; font-weight: 600; color: var(--ink); overflow-wrap: anywhere; }
-.sum dd::first-letter { text-transform: uppercase; }
 
 @media (max-width: 900px) {
   .cad__more { display: none; }
   .svc__item > span { flex-wrap: wrap; row-gap: 4px; }
   .sum div { grid-template-columns: 96px minmax(0, 1fr); padding: 12px 14px; }
   .day span { width: 62px; height: 78px; }
+}
+
+/* Celular: lista longa (18 serviços, 30 horários) e o Continuar sempre à vista. */
+@media (max-width: 900px) {
+  .cad__nav { position: sticky; bottom: 0; z-index: 2; margin: 0 -20px; padding: 12px 20px calc(12px + env(safe-area-inset-bottom)); background: var(--paper); }
 }
