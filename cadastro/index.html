@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Cadastro | Gran Cavalheiro</title>
-<meta name="description" content="Faça seu cadastro na Gran Cavalheiro Barbearia, no Batel e no Cabral, em Curitiba.">
+<title>Agendar | Gran Cavalheiro</title>
+<meta name="description" content="Escolha o serviço e um horário livre na Gran Cavalheiro Barbearia, no Batel e no Cabral, em Curitiba.">
 <meta name="theme-color" content="#141211">
 <meta name="robots" content="noindex">
 <link rel="icon" href="/assets/img/monogram-dark.png">
@@ -13,7 +13,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,600..900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="preload" as="image" href="/assets/img/chair-warm.webp">
 <link rel="stylesheet" href="/styles.css?v=12">
-<link rel="stylesheet" href="/cadastro/cadastro.css?v=3">
+<link rel="stylesheet" href="/cadastro/cadastro.css?v=5">
 </head>
 <body class="cad-page">
 
@@ -37,21 +37,21 @@
     <div class="cad__pitch">
       <p class="cad__kicker">Batel · Cabral · Curitiba</p>
       <p class="d cad__headline">Sua cadeira<br><em>te espera</em></p>
-      <p class="cad__sub">Quatro perguntas rápidas e você já é cliente da casa.</p>
+      <p class="cad__sub">Seus dados, o serviço e um horário livre. A gente confirma pelo WhatsApp.</p>
     </div>
     <ol class="cad__steps" aria-hidden="true">
-      <li data-dot="1"><span>01</span>Seu nome</li>
-      <li data-dot="2"><span>02</span>Contato</li>
-      <li data-dot="3"><span>03</span>Aniversário</li>
-      <li data-dot="4"><span>04</span>Como conheceu</li>
+      <li data-dot="1"><span>01</span>Você</li>
+      <li data-dot="2"><span>02</span>Serviço</li>
+      <li data-dot="3"><span>03</span>Horário</li>
+      <li data-dot="4"><span>04</span>Confirmar</li>
     </ol>
   </aside>
 
   <main class="cad__main">
     <div class="cad__panel">
       <div class="cad__progress" id="progress">
-        <p class="cad__count" aria-live="polite">Etapa <b id="step-n">1</b> de 4</p>
-        <div class="cad__bar" role="progressbar" aria-label="Progresso do cadastro" aria-valuemin="1" aria-valuemax="4" aria-valuenow="1"><i id="bar"></i></div>
+        <p class="cad__count" aria-live="polite">Etapa <b id="step-n">1</b> de 4 · <span id="step-name">Você</span></p>
+        <div class="cad__bar" role="progressbar" aria-label="Progresso do agendamento" aria-valuemin="1" aria-valuemax="4" aria-valuenow="1"><i id="bar"></i></div>
       </div>
 
       <form id="signup" class="cad__form" novalidate>
@@ -91,21 +91,33 @@
         </fieldset>
 
         <fieldset class="step" data-step="4" hidden>
-          <legend class="step__q">Como conheceu <em>a Gran?</em></legend>
-          <p class="step__hint">Escolha uma opção.</p>
-          <div class="tiles" id="f-como">
-            <label class="tile"><input type="radio" name="comoConheceu" value="Instagram"><span>Instagram</span></label>
-            <label class="tile"><input type="radio" name="comoConheceu" value="Indicação"><span>Indicação</span></label>
-            <label class="tile"><input type="radio" name="comoConheceu" value="Google"><span>Google</span></label>
-            <label class="tile"><input type="radio" name="comoConheceu" value="Fachada da loja"><span>Fachada da loja</span></label>
-            <label class="tile"><input type="radio" name="comoConheceu" value="Facebook"><span>Facebook</span></label>
-            <label class="tile"><input type="radio" name="comoConheceu" value="Anúncios"><span>Anúncios</span></label>
-            <label class="tile"><input type="radio" name="comoConheceu" value="Site"><span>Site</span></label>
-            <label class="tile"><input type="radio" name="comoConheceu" value="Eventos"><span>Eventos</span></label>
-            <label class="tile"><input type="radio" name="comoConheceu" value="Panfleto"><span>Panfleto</span></label>
-            <label class="tile"><input type="radio" name="comoConheceu" value="Cortesia"><span>Cortesia</span></label>
-          </div>
-          <p class="field__err" id="e-comoConheceu" aria-live="polite"></p>
+          <legend class="step__q">Qual <em>serviço?</em></legend>
+          <p class="step__hint">Escolha um. O tempo e o valor aparecem do lado.</p>
+          <div class="svc" id="f-servico" role="radiogroup" aria-label="Serviço"></div>
+          <p class="cad__loading" id="svc-loading">Carregando os serviços...</p>
+          <p class="field__err" id="e-servico" aria-live="polite"></p>
+        </fieldset>
+
+        <fieldset class="step" data-step="5" hidden>
+          <legend class="step__q">Com <em>quem?</em></legend>
+          <p class="step__hint">Sem preferência mostra mais horários.</p>
+          <div class="tiles" id="f-barbeiro" role="radiogroup" aria-label="Barbeiro"></div>
+          <p class="field__err" id="e-barbeiro" aria-live="polite"></p>
+        </fieldset>
+
+        <fieldset class="step" data-step="6" hidden>
+          <legend class="step__q">Qual <em>dia e horário?</em></legend>
+          <p class="step__hint">Só aparece o que está livre agora.</p>
+          <div class="days" id="f-dia" role="radiogroup" aria-label="Dia"></div>
+          <div class="times" id="f-hora" role="radiogroup" aria-label="Horário" aria-live="polite"></div>
+          <p class="cad__loading" id="time-msg" aria-live="polite"></p>
+          <p class="field__err" id="e-hora" aria-live="polite"></p>
+        </fieldset>
+
+        <fieldset class="step" data-step="7" hidden>
+          <legend class="step__q">Confere <em>se está certo</em></legend>
+          <p class="step__hint">Ao confirmar, abre o WhatsApp da Gran com tudo escrito. É só enviar.</p>
+          <dl class="sum" id="resumo"></dl>
         </fieldset>
 
         <div class="hp" aria-hidden="true">
@@ -125,19 +137,19 @@
 
       <div id="signup-done" class="cad__done" hidden>
         <span class="cad__ok"><svg class="i"><use href="#check"/></svg></span>
-        <h1 class="step__q" tabindex="-1">Tudo certo, <em id="done-nome"></em></h1>
-        <p class="step__hint">Seu cadastro está feito. Agora é só escolher o horário.</p>
+        <h1 class="step__q" tabindex="-1">Pedido feito, <em id="done-nome"></em></h1>
+        <p class="step__hint">Envie a mensagem que abriu no WhatsApp. A Gran confirma o horário por lá.</p>
         <div class="cad__done-ctas">
-          <a class="btn btn--copper btn--lg" href="https://cashbarber.com.br/GranCavalheiro/" target="_blank" rel="noopener">Agendar horário <svg class="i"><use href="#arrow"/></svg></a>
+          <a class="btn btn--copper btn--lg" id="done-wa" href="#" target="_blank" rel="noopener">Abrir o WhatsApp de novo <svg class="i"><use href="#arrow"/></svg></a>
           <a class="btn btn--line btn--lg" href="/">Voltar ao site</a>
         </div>
       </div>
 
-      <p class="cad__alt" id="alt">Já é cliente? <a href="https://cashbarber.com.br/GranCavalheiro/" target="_blank" rel="noopener">Agendar direto</a></p>
+      <p class="cad__alt" id="alt">Prefere falar com alguém? <a href="https://wa.me/5541988697721" target="_blank" rel="noopener">Chamar no WhatsApp</a></p>
     </div>
   </main>
 </div>
 
-<script src="/cadastro-form.js?v=3"></script>
+<script src="/cadastro-form.js?v=5"></script>
 </body>
 </html>

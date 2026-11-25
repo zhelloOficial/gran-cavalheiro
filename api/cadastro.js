@@ -46,6 +46,13 @@ module.exports = async function handler(req, res) {
     email: text(body.email, 254) || null,
     nascimento: text(body.nascimento, 20) || null,
     comoConheceu: text(body.comoConheceu, 60) || null,
+    // Serviço, barbeiro, dia e hora escolhidos: vão pras observações do lead no VP.
+    respostas: Array.isArray(body.respostas)
+      ? body.respostas
+          .slice(0, 8)
+          .map((r) => ({ pergunta: text(r && r.pergunta, 120), resposta: text(r && r.resposta, 300) }))
+          .filter((r) => r.pergunta && r.resposta)
+      : null,
     origem: body.origem && typeof body.origem === "object"
       ? {
           utm_source: text(body.origem.utm_source, 300) || null,
