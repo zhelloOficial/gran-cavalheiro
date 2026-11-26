@@ -550,6 +550,7 @@
     if (win) { try { win.opener = null; } catch (err) { /* outra origem */ } }
     document.getElementById("done-wa").href = url;
     saveLead();
+    if (typeof window.fbq === "function") window.fbq("track", "Lead");
     done();
     if (!win) window.location.href = url;
   }
